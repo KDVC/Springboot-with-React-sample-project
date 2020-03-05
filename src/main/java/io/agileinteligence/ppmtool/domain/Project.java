@@ -5,7 +5,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.lang.reflect.GenericArrayType;
 import java.util.Date;
 
 /**
@@ -19,7 +18,7 @@ import java.util.Date;
 @NoArgsConstructor
 public class Project {
 
-    @Id()
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
@@ -39,11 +38,11 @@ public class Project {
 
     @PrePersist
     protected void onCreate(){
-        this.createdAt = createdAt;
+        this.createdAt = new Date();
     }
 
     @PreUpdate
     protected void onUpdate(){
-        this.updatedAt = updatedAt;
+        this.updatedAt = new Date();
     }
 }
